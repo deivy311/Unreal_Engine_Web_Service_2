@@ -1,10 +1,13 @@
 {
   "reset_info":[
     {
-      "reset":"0"
+      "reset":"1"
     },
     {
       "reset2":1
+    },
+    {
+      "reset3":0
     }
     ]
 }
