@@ -13,6 +13,18 @@ CORS(app, support_credentials=True)
 @app.route('/', methods=['POST', 'GET'])
 def home():
     return "Hello!"
+#function to cehck the actual state of the reset or not
+@app.route('/get_reset_info', methods=['POST', 'GET'])
+def get_reset_info():
+        
+    ChessBoard_info = pd.read_csv("ChessBoard_info.csv")
+    patient_info = ChessBoard_info.loc[ChessBoard_info['reset']]
+    
+    out = patient_info.to_dict(orient = "records")
+    
+    resp = flask.jsonify(out[0])
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp
 
 
 @app.route('/get_patient_info', methods=['POST', 'GET'])
