@@ -18,7 +18,7 @@ def home():
 def get_reset_info():
         
     ChessBoard_info = pd.read_csv("ChessBoard_info.csv")
-    reset_command = ChessBoard_info.loc[ChessBoard_info['reset']]
+    reset_command = ChessBoard_info#ChessBoard_info.loc[ChessBoard_info['reset']]
     
     out = reset_command.to_dict(orient = "records")
     
@@ -27,12 +27,12 @@ def get_reset_info():
     return resp
 
 
-@app.route('/get_patient_info', methods=['POST', 'GET'])
+@app.route('/set_reset_info', methods=['POST', 'GET'])
 def get_patient_info():
     post_request = request.get_json(force=True) # Get data posted as a json
-    id = int(post_request['patient_id'])
+    id = int(post_request['reset_state'])
     if not id:
-        resp = flask.jsonify("No ID provided")
+        resp = flask.jsonify("No Reset state provided")
         resp.headers.add('Access-Control-Allow-Origin', '*')
         return resp
     
