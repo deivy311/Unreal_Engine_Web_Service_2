@@ -1,18 +1,10 @@
 {
   "reset_info":[
     {
-      "reset":"1"
-    },
-    {
-      "reset2":1
-    },
-    {
-      "reset3":0
-    },
-    {
-      "reset4":"0"
-    },
-    {
+      "reset1":"1",
+      "reset2":1,
+      "reset3":0,
+      "reset4":"0",
       "reset5":"1"
     }
     ]
