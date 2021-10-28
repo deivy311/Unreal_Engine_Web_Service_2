@@ -17,12 +17,29 @@ def home():
 @app.route('/get_reset_info', methods=['POST', 'GET'])
 def get_reset_info():
         
-    ChessBoard_info = pd.read_csv("ChessBoard_info.csv")
+    # ChessBoard_info = pd.read_csv("ChessBoard_info.csv")
+    ChessBoard_info = pd.read_json("reset_state.json")
     reset_command = ChessBoard_info#ChessBoard_info.loc[ChessBoard_info['reset']]
     
     out = reset_command.to_dict(orient = "records")
     
-    resp = flask.jsonify(out[0])
+    # resp = flask.jsonify(out[0])
+    # resp = flask.jsonify(out)
+
+    # Opening JSON file
+    f = open('reset_state.json',)
+    
+    # returns JSON object as
+    # a dictionary
+    data = json.load(f)
+    
+    # Iterating through the json
+    # list
+
+    
+    resp = flask.jsonify(data)
+    # Closing file
+    f.close()
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
