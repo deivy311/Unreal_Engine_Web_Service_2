@@ -18,9 +18,9 @@ def home():
 def get_reset_info():
         
     ChessBoard_info = pd.read_csv("ChessBoard_info.csv")
-    patient_info = ChessBoard_info.loc[ChessBoard_info['reset']]
+    reset_command = ChessBoard_info.loc[ChessBoard_info['reset']]
     
-    out = patient_info.to_dict(orient = "records")
+    out = reset_command.to_dict(orient = "records")
     
     resp = flask.jsonify(out[0])
     resp.headers.add('Access-Control-Allow-Origin', '*')
